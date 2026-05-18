@@ -1,0 +1,48 @@
+---
+title: 'Módulo fs'
+description: 'Manejo del File System: Lectura, escritura y administración de archivos locales.'
+---
+
+El módulo `fs` (File System) envuelve la librería estándar nativa de Rust de una forma muy fácil para que scripts de Kadoku puedan procesar archivos.
+
+<Warning>
+Las rutas de archivo son relativas al directorio desde donde se ejecuta el compilador (`kadoku run`).
+</Warning>
+
+## Métodos
+
+### `read(ruta)`
+Lee el contenido completo de un archivo y lo devuelve como una cadena de texto (`Str`). Si el archivo no existe, lanza un error fatal de Rust en runtime. Para evitarlo, usa `exists()` antes.
+
+```javascript
+@import "fs" #independent;
+let archivo = fs.read("data.txt");
+!log(archivo);
+```
+
+### `write(ruta, contenido)`
+Escribe una cadena de texto (`contenido`) en la `ruta` especificada. Sobreescribe el archivo si ya existe, y lo crea si no existe.
+
+```javascript
+@import "fs" #independent;
+fs.write("hola.txt", "Hola desde Kadoku!");
+```
+
+### `exists(ruta)`
+Comprueba si un archivo o directorio existe devolviendo un booleano (`true` o `false`).
+
+```javascript
+@import "fs" #independent;
+if fs.exists("config.json"):
+    !log("¡El archivo existe!");
+else:
+    !warn("Falta config.json");
+```
+
+### `mkdir(ruta)`
+Crea un directorio de forma recursiva. Es decir, si la ruta es `padre/hijo` y `padre` no existe, se crearán ambos.
+
+```javascript
+@import "fs" #independent;
+fs.mkdir("src/datos/temporales");
+```

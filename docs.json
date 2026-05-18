@@ -1,0 +1,165 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Kadoku",
+  "colors": {
+    "primary": "#6C63FF",
+    "light": "#A89CFF",
+    "dark": "#3D35CC"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Introducción",
+            "pages": [
+              "getting-started/what-is-kadoku",
+              "getting-started/installation",
+              "getting-started/quickstart",
+              "getting-started/first-program"
+            ]
+          },
+          {
+            "group": "El Lenguaje",
+            "pages": [
+              "language/syntax",
+              "language/variables",
+              "language/functions",
+              "language/control-flow",
+              "language/operators",
+              "language/data-types"
+            ]
+          },
+          {
+            "group": "Sistema de Módulos",
+            "pages": [
+              "modules/imports",
+              "modules/stdlib-overview",
+              "modules/cmd",
+              "modules/math",
+              "modules/fs",
+              "modules/net",
+              "modules/web",
+              "modules/db",
+              "modules/ai"
+            ]
+          },
+          {
+            "group": "Rust Interop",
+            "pages": [
+              "rust-interop/overview",
+              "rust-interop/use-rust",
+              "rust-interop/exposing-symbols",
+              "rust-interop/crate-dependencies"
+            ]
+          },
+          {
+            "group": "Gestión de Proyectos",
+            "pages": [
+              "project/manifest",
+              "project/dependencies",
+              "project/configuration"
+            ]
+          },
+          {
+            "group": "CLI",
+            "pages": [
+              "cli/overview",
+              "cli/create",
+              "cli/build",
+              "cli/run",
+              "cli/check",
+              "cli/fmt"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Guías",
+        "groups": [
+          {
+            "group": "Guías",
+            "pages": [
+              "guides/web-server",
+              "guides/file-processing",
+              "guides/ai-integration",
+              "guides/rust-native-extension",
+              "guides/ipc-python",
+              "guides/ipc-nodejs"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Referencia",
+        "groups": [
+          {
+            "group": "Referencia",
+            "pages": [
+              "reference/stdlib",
+              "reference/grammar",
+              "reference/compiler-errors",
+              "reference/manifest-schema"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Tutoriales",
+        "groups": [
+          {
+            "group": "Tutoriales",
+            "pages": [
+              "tutorials/todo-cli",
+              "tutorials/rest-api",
+              "tutorials/ai-chatbot",
+              "tutorials/data-pipeline"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "GitHub",
+          "href": "https://github.com/kadoku-lang/kadoku",
+          "icon": "github"
+        },
+        {
+          "anchor": "Comunidad",
+          "href": "https://discord.gg/kadoku",
+          "icon": "discord"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/kadoku-lang/kadoku"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Empezar",
+      "href": "/getting-started/installation"
+    }
+  },
+  "search": {
+    "prompt": "Buscar en la documentación..."
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/kadoku-lang/kadoku"
+    }
+  }
+}

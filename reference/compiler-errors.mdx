@@ -1,0 +1,41 @@
+---
+title: 'Errores del Compilador / Compiler Errors'
+description: 'Lista de errores comunes y sus significados / List of common errors and their meanings'
+---
+
+<Tabs>
+<Tab title="Español">
+# Errores del Compilador
+
+El compilador de Kadoku utiliza la fase de Rust (`rustc`) subyacente para el chequeo de tipos final y de sintaxis, pero lanza sus propios errores sintácticos.
+
+## E001: Sintaxis Inválida (Invalid Syntax)
+Ocurre cuando el *Parser* de Kadoku no entiende el código escrito. Revisa la falta de `func`, o indentación incorrecta.
+
+## E002: Variable No Definida (Undefined Variable)
+Intentaste usar una variable que no ha sido declarada con `let`, `var` o `const`.
+
+## E003: Directiva No Reconocida (Unknown Directive)
+Ocurre cuando se usa una directiva que el compilador no entiende, como `@imprt` en lugar de `@import`.
+
+## E004: Módulo Inexistente (Module Not Found)
+Lanzado cuando se usa `@import "inexistente"`. Verifica que el módulo esté presente en la Standard Library.
+</Tab>
+<Tab title="English">
+# Compiler Errors
+
+The Kadoku compiler uses the underlying Rust phase (`rustc`) for final type and syntax checking, but throws its own syntax errors.
+
+## E001: Invalid Syntax
+Occurs when the Kadoku *Parser* doesn't understand the written code. Check for missing `func` keywords or incorrect indentation.
+
+## E002: Undefined Variable
+You tried to use a variable that hasn't been declared with `let`, `var`, or `const`.
+
+## E003: Unknown Directive
+Occurs when a directive is used that the compiler doesn't understand, such as `@imprt` instead of `@import`.
+
+## E004: Module Not Found
+Thrown when `@import "nonexistent"` is used. Verify that the module is present in the Standard Library.
+</Tab>
+</Tabs>

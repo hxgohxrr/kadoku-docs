@@ -1,0 +1,22 @@
+---
+title: 'kadoku test'
+description: 'Ejecuta el conjunto de pruebas del proyecto.'
+---
+
+El comando `test` está diseñado para aislar las funciones de tu proyecto y verificar que todo funciona correctamente mediante aserciones.
+
+## Ejecución
+
+```bash
+kadoku test
+```
+
+Este comando buscará automáticamente el directorio `tests/` en la raíz de tu proyecto o los archivos que terminen con el sufijo `_test.ku`.
+
+Una vez detectados, se inyectarán macros de pruebas y se compilarán en modo de aislamiento. El comando generará un reporte final indicando:
+- Las pruebas que han **pasado** (`ok`).
+- Las pruebas que han **fallado** (`FAILED`), incluyendo la traza del error exacto.
+
+<Tip>
+Mantén tus archivos de testing estructurados dentro de la carpeta `tests/`. Kadoku se encarga de encontrarlos y ejecutarlos en orden.
+</Tip>

@@ -1,0 +1,40 @@
+---
+title: 'Módulo web'
+description: 'Levanta tu propio servidor web HTTP nativo e interno.'
+---
+
+Kadoku integra `axum` y `tokio` dentro del runtime para ofrecer el módulo `web`. Con él puedes levantar APIs REST o servidores de archivos súper rápidos, sin necesidad de dependencias de terceros como Express.js (Node) o Flask (Python).
+
+## Métodos
+
+### `route(path, content_type, response)`
+Añade un endpoint estático a tu tabla de enrutamiento web.
+- `path`: La URL del endpoint (ej. `/`, `/api/ping`).
+- `content_type`: Cabecera MIME (ej. `text/html`, `application/json`).
+- `response`: La cadena de texto (`Str`) que devolverá el servidor.
+
+```javascript
+@import "web" #independent;
+
+func config_rutas():
+    web.route("/", "text/html", "<h1>Bienvenido a Kadoku</h1>");
+    web.route("/api", "application/json", "{\"status\": \"ok\"}");
+```
+
+### `listen()`
+Bloquea el hilo principal y empieza a escuchar las peticiones entrantes.
+Por defecto, escucha en `0.0.0.0:8080`.
+
+```javascript
+@import "web" #independent;
+
+func main():
+    web.route("/", "text/plain", "Server Ready");
+    
+    !log("El servidor está arrancando...");
+    web.listen(); // A partir de aquí, el código espera peticiones web.
+```
+
+<Tip>
+Para ejemplos más avanzados, visita la [guía del servidor web](/guides/web-server).
+</Tip>

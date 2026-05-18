@@ -1,0 +1,85 @@
+---
+title: Primer Programa / First Program
+description: 'Escribe y ejecuta tu primer programa en Kadoku / Write and run your first Kadoku program'
+---
+
+<Tabs><Tab title="Español">
+    # Tu Primer Programa en Kadoku
+
+    En esta guía rápida escribiremos el clásico programa "Hola, Mundo!" usando Kadoku.
+
+    ## 1. Crear un Proyecto
+
+    Abre tu terminal y usa la herramienta CLI de Kadoku para generar una nueva plantilla de proyecto:
+
+    ```bash
+    kadoku create mi-primer-proyecto
+    cd mi-primer-proyecto
+    ```
+
+    ## 2. Escribir el Código
+
+    Abre el archivo `src/main.ku` en tu editor. Reemplaza el contenido con lo siguiente:
+
+    ```kadoku
+    @import "cmd" #independent;
+
+    func main():
+        !log("¡Hola, Mundo desde Kadoku!");
+        return 0;
+
+    default main();
+    ```
+
+    ## 3. Compilar y Ejecutar
+
+    Desde la raíz de tu proyecto, ejecuta el siguiente comando:
+
+    ```bash
+    kadoku run
+    ```
+
+    Verás en la terminal:
+    ```bash
+    ¡Hola, Mundo desde Kadoku!
+    ```</Tab><Tab title="English">
+    # Your First Kadoku Program
+
+    In this quick guide, we'll write the classic "Hello, World!" program using Kadoku.
+
+    ## 1. Create a Project
+
+    Open your terminal and use the Kadoku CLI tool to generate a new project template:
+
+    ```bash
+    kadoku create my-first-project
+    cd my-first-project
+    ```
+
+    ## 2. Write the Code
+
+    Open the `src/main.ku` file in your editor. Replace the content with the following:
+
+    ```kadoku
+    @import "cmd" #independent;
+
+    func main():
+        !log("Hello, World from Kadoku!");
+        return 0;
+
+    default main();
+    ```
+
+    ## 3. Compile and Run
+
+    From the root of your project, run the following command:
+
+    ```bash
+    kadoku run
+    ```
+
+    You will see in your terminal:
+    ```bash
+    Hello, World from Kadoku!
+    ```</Tab>
+</Tabs>

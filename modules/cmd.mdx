@@ -1,0 +1,63 @@
+---
+title: 'Módulo cmd / cmd Module'
+description: 'Interacción con la consola, el sistema operativo y variables de entorno. / Console, OS, and environment variables interaction.'
+---
+
+<Tabs>
+<Tab title="Español">
+El módulo `cmd` expone funciones para imprimir en consola, capturar argumentos, leer variables de entorno y ejecutar comandos en la shell del sistema.
+
+## Métodos
+
+### `log(mensaje)`
+Imprime un mensaje en la salida estándar (`stdout`) seguido de un salto de línea.
+
+```javascript
+@import "cmd" #independent;
+!log("Hola Mundo desde Kadoku");
+```
+
+### `warn(mensaje)`
+Imprime un mensaje formateado como advertencia (usualmente en amarillo) en `stderr`.
+
+### `error(mensaje)`
+Imprime un mensaje de error (usualmente en rojo) en `stderr` y termina el programa con código de salida no exitoso.
+
+### `args()`
+Retorna un Arreglo (`Array`) de cadenas conteniendo todos los argumentos que fueron pasados a la aplicación desde la línea de comandos.
+
+### `env(clave)`
+Lee una variable de entorno del sistema operativo. Devuelve la cadena o `null` si no existe.
+
+### `exec(comando)`
+Ejecuta un comando directamente en la terminal nativa y devuelve un Objeto con `stdout` y `stderr`.
+</Tab>
+<Tab title="English">
+The `cmd` module exposes functions to print to the console, capture arguments, read environment variables, and execute commands in the system shell.
+
+## Methods
+
+### `log(message)`
+Prints a message to standard output (`stdout`) followed by a newline.
+
+```javascript
+@import "cmd" #independent;
+!log("Hello World from Kadoku");
+```
+
+### `warn(message)`
+Prints a formatted warning message (usually in yellow) to `stderr`.
+
+### `error(message)`
+Prints an error message (usually in red) to `stderr` and terminates the program with a non-successful exit code.
+
+### `args()`
+Returns an Array of strings containing all the arguments that were passed to the application from the command line.
+
+### `env(key)`
+Reads an environment variable from the operating system. Returns the string or `null` if it doesn't exist.
+
+### `exec(command)`
+Executes a command directly in the native terminal and returns an Object with `stdout` and `stderr`.
+</Tab>
+</Tabs>

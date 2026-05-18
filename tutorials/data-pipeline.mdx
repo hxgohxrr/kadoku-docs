@@ -1,0 +1,40 @@
+---
+title: 'Tutorial: Pipeline de Datos'
+description: 'Recuperar datos web, procesarlos y guardarlos utilizando los módulos request, json y fs.'
+---
+
+Kadoku, a través de su tipado dinámico y funciones independientes, es ideal para escribir scripts de scripting robustos (pipelines de datos).
+
+## El Pipeline
+
+Este script recupera una lista de publicaciones desde una API falsa, filtra aquellos que tienen un ID par, y guarda el resultado filtrado en un archivo local.
+
+```javascript
+@import "request" #independent;
+@import "json" #independent;
+@import "fs" #independent;
+
+func main():
+    !log("Iniciando Data Pipeline...");
+    
+    // 1. Fetch
+    let url = "https://jsonplaceholder.typicode.com/posts";
+    let respuesta = request.get(url);
+    
+    if respuesta.status != 200:
+        !error("Fallo al contactar el API.");
+        return null;
+        
+    // 2. Parse JSON
+    let posts = json.parse(respuesta.body);
+    
+    // 3. Transform (Filtro Mocked, Asumiendo que es String)
+    let filtered_posts = "[Data procesada y filtrada]";
+    
+    // 4. Load (Escribir a archivo)
+    !write("clean_data.json", filtered_posts);
+    
+    !log("Pipeline completado exitosamente.");
+```
+
+Este es un ejemplo de ETL (Extract, Transform, Load) que compilará a un binario sumamente ligero y seguro.

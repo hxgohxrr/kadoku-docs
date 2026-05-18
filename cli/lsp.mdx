@@ -1,0 +1,27 @@
+---
+title: 'kadoku lsp'
+description: 'Inicia el Language Server Protocol para integraciones con editores de código.'
+---
+
+El comando `kadoku lsp` (o a través del binario `kadoku-lsp`) inicializa un servidor en modo **Language Server Protocol (LSP)** usando la entrada y salida estándar (`stdin`/`stdout`).
+
+Este comando es utilizado "detrás de escena" por extensiones de editores (como VS Code, Neovim, IntelliJ) para proveer herramientas de análisis enriquecido.
+
+## Capacidades Soportadas
+
+El LSP de Kadoku brinda las siguientes características para mejorar la experiencia de desarrollo (DX):
+
+- **Sincronización de Documentos**: Detecta cambios mientras escribes en el editor.
+- **Diagnóstico en Tiempo Real**: Subraya los errores de sintaxis y semánticos, apuntando la línea exacta del fallo sin necesidad de compilar.
+- **Autocompletado Rápido**: Sugiere palabras clave (`func`, `let`) y funciones nativas (`!log`, `!warn`).
+
+<Note>
+Por lo general, no invocarás este comando directamente en tu terminal. La extensión de VS Code de Kadoku se encarga de lanzar este binario en segundo plano.
+</Note>
+
+## ¿Cómo funciona internamente?
+
+A nivel de arquitectura, el LSP es un motor ultra-rápido escrito 100% en Rust. 
+
+- **Comunicación**: Cuando abres un proyecto Kadoku, tu editor lanza de fondo el binario `kadoku-lsp`. A partir de ahí, el editor y el servidor se comunican en tiempo real pasándose mensajes JSON de ida y vuelta a través de `stdin` y `stdout`.
+- **Análisis Inteligente**: El servidor LSP reutiliza el mismo motor interno del compilador de Kadoku (como su analizador semántico `sema.rs`). Esto significa que las advertencias y subrayados de error que ves en la pantalla son exactamente los mismos chequeos de seguridad y lógica que el compilador realizará al hacer build, previniendo fallos en tiempo de ejecución de manera asíncrona y silenciosa.

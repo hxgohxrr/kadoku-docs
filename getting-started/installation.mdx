@@ -1,0 +1,67 @@
+---
+title: Instalación / Installation
+description: 'Cómo instalar Kadoku en tu sistema / How to install Kadoku on your system'
+---
+
+<Tabs><Tab title="Español">
+    # Instalación
+
+    Kadoku es fácil de instalar y viene como un ejecutable estático independiente que no requiere dependencias pesadas.
+
+    ## Requisitos Previos
+
+    Actualmente, dado que Kadoku compila código a binarios nativos usando el toolchain subyacente de Rust, necesitas tener instaladas las herramientas de compilación básicas:
+
+    1. [Rust y Cargo](https://rustup.rs/) instalados en tu sistema.
+    2. Un entorno de compilación de C++ (por ejemplo, Visual Studio Build Tools en Windows, o build-essential en Linux).
+
+    ## Descarga e Instalación
+
+    Dado que Kadoku está en desarrollo activo, la mejor forma de obtener la versión más reciente es clonar el repositorio y compilarlo localmente:
+
+    ```bash
+    git clone https://github.com/kadoku-lang/kadoku.git
+    cd kadoku
+    cargo build --release
+    ```
+
+    El binario de Kadoku estará disponible en `target/release/kadoku.exe` (en Windows) o `target/release/kadoku` (en Linux/macOS). Para poder ejecutar `kadoku` desde cualquier lugar, añade esta ruta a tu `PATH`.
+
+    ## Verificación
+
+    Para comprobar que la instalación fue exitosa, ejecuta:
+
+    ```bash
+    kadoku --version
+    ```</Tab><Tab title="English">
+    # Installation
+
+    Kadoku is easy to install and comes as a standalone static executable that doesn't require heavy dependencies.
+
+    ## Prerequisites
+
+    Currently, since Kadoku compiles code to native binaries using the underlying Rust toolchain, you need to have basic build tools installed:
+
+    1. [Rust and Cargo](https://rustup.rs/) installed on your system.
+    2. A C++ build environment (e.g., Visual Studio Build Tools on Windows, or build-essential on Linux).
+
+    ## Download and Install
+
+    Since Kadoku is in active development, the best way to get the latest version is to clone the repository and build it locally:
+
+    ```bash
+    git clone https://github.com/kadoku-lang/kadoku.git
+    cd kadoku
+    cargo build --release
+    ```
+
+    The Kadoku binary will be available in `target/release/kadoku.exe` (on Windows) or `target/release/kadoku` (on Linux/macOS). To run `kadoku` from anywhere, add this path to your `PATH` environment variable.
+
+    ## Verification
+
+    To verify the installation was successful, run:
+
+    ```bash
+    kadoku --version
+    ```</Tab>
+</Tabs>

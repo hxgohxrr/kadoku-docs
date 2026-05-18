@@ -1,0 +1,101 @@
+---
+title: 'Crear una API REST / Build a REST API'
+description: 'Aprende a construir y estructurar una API REST usando el servidor asíncrono y enrutador nativo de Kadoku. / Learn how to build and structure a REST API using Kadoku native async server and router.'
+---
+
+<Tabs>
+<Tab title="Español">
+En este tutorial vamos a usar el módulo `web` y `json` para construir una pequeña API RESTful para administrar una lista de tareas.
+
+## Código del Servidor
+
+Crea un archivo llamado `api.ku`:
+
+```javascript
+@import "web" #independent;
+@import "json" #independent;
+@import "cmd" #independent;
+
+// Usaremos memoria para este tutorial
+var db_todos = [];
+
+func main():
+    !log("Iniciando API REST en puerto 3000...");
+
+    // GET /todos
+    !route("/todos", "application/json", func(req):
+        return json.stringify({
+            status: "success",
+            data: db_todos
+        });
+    );
+
+    // POST /todos/create
+    // Nota: en un caso real leeríamos req.body, por ahora lo simulamos.
+    !route("/todos/create", "application/json", func(req):
+        let nuevo = "Comprar leche";
+        // Añadir a la "base de datos" (simulado, asumiendo array nativo)
+        return json.stringify({
+            status: "success",
+            message: "Tarea agregada"
+        });
+    );
+
+    !listen(3000);
+```
+
+## Ejecución
+
+Corre tu servidor con:
+```bash
+kadoku run api.ku
+```
+</Tab>
+<Tab title="English">
+In this tutorial, we will use the `web` and `json` modules to build a small RESTful API to manage a list of tasks.
+
+## Server Code
+
+Create a file named `api.ku`:
+
+```javascript
+@import "web" #independent;
+@import "json" #independent;
+@import "cmd" #independent;
+
+// We will use memory for this tutorial
+var db_todos = [];
+
+func main():
+    !log("Starting REST API on port 3000...");
+
+    // GET /todos
+    !route("/todos", "application/json", func(req):
+        return json.stringify({
+            status: "success",
+            data: db_todos
+        });
+    );
+
+    // POST /todos/create
+    // Note: in a real scenario we would read req.body, for now we simulate it.
+    !route("/todos/create", "application/json", func(req):
+        let new_task = "Buy milk";
+        // Add to "database" (simulated, assuming native array)
+        return json.stringify({
+            status: "success",
+            message: "Task added"
+        });
+    );
+
+    !listen(3000);
+```
+
+## Execution
+
+Run your server with:
+```bash
+kadoku run api.ku
+```
+</Tab>
+</Tabs>

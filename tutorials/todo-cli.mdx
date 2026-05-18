@@ -1,0 +1,75 @@
+---
+title: 'Tutorial: Todo CLI'
+description: 'Construye tu primera aplicación de terminal (CLI) para gestionar tareas en Kadoku'
+---
+
+En este tutorial, crearemos una sencilla aplicación de línea de comandos para gestionar Tareas (Todo List) en Kadoku. Aprenderás a estructurar un proyecto, utilizar el módulo `fs` (File System) y compilar tu ejecutable.
+
+## Paso 1: Configurar el Proyecto
+
+Primero, inicializa un proyecto nuevo en la terminal:
+
+```bash
+kadoku new todo_cli
+cd todo_cli
+```
+
+Verás que se generan los archivos principales `project.ku.json` y `src/main.ku`.
+
+## Paso 2: La Lógica del CLI
+
+Abre `src/main.ku` y añade el siguiente código. Haremos un script que lee un archivo JSON (`todos.json`) para cargar las tareas, y las sobreescribe cuando se añade una nueva.
+
+```javascript
+@import "fs" #independent;
+@import "json" #independent;
+@import "cmd" #independent;
+
+let FILE_NAME = "todos.json";
+
+func init_db():
+    if not !exists(FILE_NAME):
+        !write(FILE_NAME, "[]");
+
+func read_todos():
+    let data = !read(FILE_NAME);
+    return json.parse(data);
+
+func add_todo(task):
+    let current = read_todos();
+    // Simulando empujar a un array en Kadoku dinámico
+    let new_db = json.stringify(task); 
+    // Por simplicidad en este tutorial reescribiremos:
+    !write(FILE_NAME, new_db);
+    !log("Tarea añadida exitosamente.");
+
+func main():
+    init_db();
+    
+    // Obtenemos los argumentos que el usuario pasa en consola
+    let arguments = cmd.args();
+    
+    if arguments == "add":
+        add_todo("Nueva Tarea Generica");
+    else if arguments == "list":
+        let list = read_todos();
+        !log("Tus tareas:");
+        !log(list);
+    else:
+        !warn("Comando desconocido. Usa 'add' o 'list'");
+```
+
+## Paso 3: Construcción y Ejecución
+
+Guarda el archivo. Luego, para probarlo sin construir:
+
+```bash
+kadoku run src/main.ku
+```
+
+Para generar un binario nativo súper rápido en Rust (ideal para distribuir tu CLI en otras máquinas sin requerir Kadoku instalado):
+
+```bash
+kadoku build --release
+```
+El archivo final estará en `target/release/todo_cli`.

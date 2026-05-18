@@ -1,0 +1,20 @@
+---
+title: 'kadoku lint'
+description: 'Herramienta de análisis de código estático (Linter).'
+---
+
+El linter analiza el código fuente del proyecto buscando patrones problemáticos, variables no declaradas o estilos de codificación pobres que podrían no fallar en la compilación, pero que representan malas prácticas.
+
+## Uso
+
+```bash
+kadoku lint
+```
+
+También puedes especificar un archivo o directorio en concreto:
+
+```bash
+kadoku lint src/main.ku
+```
+
+El linter es el paso principal antes de que empiece la compilación de fase estricta. Te advertirá de código inaccesible o dependencias importadas que jamás fueron utilizadas.

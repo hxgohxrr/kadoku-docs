@@ -1,0 +1,30 @@
+---
+title: 'Interoperabilidad con Python'
+description: 'Ejecutar código y scripts de Python directamente desde Kadoku'
+---
+
+El ecosistema de Machine Learning y Data Science vive en Python. Si usas Kadoku como el orquestador principal de tu proyecto (gracias a la solidez de Rust bajo el capó), querrás invocar scripts de Python fácilmente.
+
+Kadoku ofrece el módulo `py` para lograr una comunicación entre procesos (IPC) con el intérprete local de Python.
+
+## Ejecución de Script Directa
+
+Si tienes un bloque de código Python, puedes ejecutarlo usando `!run`.
+
+```javascript
+@import "py" #independent;
+
+func main():
+    let script = "
+import math
+print(math.pi * 10)
+    ";
+    
+    !log("Llamando a Python:");
+    let result = py.run(script);
+    !log(result);
+```
+
+<Tip>
+El módulo `py` funciona mediante una llamada IPC rápida que inicia el proceso de Python disponible en el `$PATH` del usuario y captura tanto `stdout` como posibles excepciones de `stderr`.
+</Tip>

@@ -1,0 +1,55 @@
+---
+title: 'Esquema del Manifiesto (project.ku.json)'
+description: 'Referencia estructurada para la configuración del proyecto Kadoku.'
+---
+
+Todo proyecto Kadoku debe contener un archivo de configuración en su raíz llamado `project.ku.json`. Aquí se declaran las dependencias, configuraciones del binario compilado y detalles del autor.
+
+## Estructura JSON
+
+```json
+{
+  "project": {
+    "name": "todo_cli",
+    "version": "0.1.0",
+    "authors": ["Tu Nombre <email@ejemplo.com>"],
+    "description": "Una aplicación simple"
+  },
+  "compiler": {
+    "target": "executable",
+    "optimization": "speed",
+    "rust_edition": "2021"
+  },
+  "dependencies": {
+    "jwt": "1.0.0",
+    "ai_models": "latest"
+  },
+  "ai": {
+    "provider": "ollama",
+    "model": "llama3",
+    "base_url": "http://localhost:11434/api/generate",
+    "api_key": "$OLLAMA_API_KEY",
+    "temperature": 0.8,
+    "max_tokens": 2048
+  }
+}
+```
+
+### `project`
+Los metadatos esenciales de tu paquete. Si intentas ejecutar el comando `kadoku package` para subir tu librería, el Registry leerá `name` y `version` de esta llave.
+
+### `compiler`
+Modifica el comportamiento interno.
+- `target`: `executable` para generar binarios de línea de comandos o `library` para módulos empaquetables `.kdp`.
+
+### `dependencies`
+Diccionario clave-valor. Estas dependencias son inyectadas en tu entorno de desarrollo al ejecutar el compilador. También es la lista que manipulan los comandos `kadoku add` y `kadoku remove`.
+
+### `ai`
+Bloque de configuración del comportamiento del módulo `ai`.
+- `provider`: Soporta `"ollama"`, `"openai"`, `"anthropic"` y `"builtin"`.
+- `model`: El modelo específico (ej. `"llama3"`, `"gpt-4o"`, `"claude-3-opus-20240229"`).
+- `base_url`: URL del endpoint si tienes un servidor personalizado o de un proveedor compatible con OpenAI.
+- `api_key`: Tu llave secreta. Puedes referenciar variables de entorno.
+- `temperature`: Controla la creatividad (de 0.0 a 2.0).
+- `max_tokens`: Límite máximo de salida.

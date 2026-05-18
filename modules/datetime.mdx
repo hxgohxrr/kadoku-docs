@@ -1,0 +1,31 @@
+---
+title: 'Módulo datetime'
+description: 'Gestión y manipulación de Fechas, Horas y Tiempos UNIX.'
+---
+
+El módulo `datetime` permite a Kadoku acceder a primitivas de tiempo y duración mediante la API nativa del sistema operativo a través de Rust, garantizando alta precisión (hasta nivel de microsegundos).
+
+## Métodos
+
+### `now()`
+Devuelve la marca de tiempo actual (UNIX Timestamp) en **milisegundos** desde la época estándar (1 de enero de 1970). 
+Es ideal para medir tiempos de ejecución o guardar el momento exacto en el que ocurrió un evento en una base de datos.
+
+```javascript
+@import "datetime" #independent;
+@import "cmd" #independent;
+
+func main():
+    let start = datetime.now();
+    
+    // ... operación costosa ...
+    
+    let end = datetime.now();
+    let duration = end - start;
+    !log("La operación tardó:");
+    !log(duration);
+```
+
+<Note>
+Las próximas actualizaciones extenderán este módulo con soporte completo a formatos ISO-8601, parseo de strings (ej: `"2025-10-01"`) y operaciones complejas de zonas horarias.
+</Note>

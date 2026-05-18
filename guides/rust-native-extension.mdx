@@ -1,0 +1,75 @@
+---
+title: 'Extensiones Nativas Rust / Rust Native Extensions'
+description: 'Cómo extender Kadoku usando código en Rust con la directiva @use_rust / How to extend Kadoku using Rust code with the @use_rust directive'
+---
+
+<Tabs>
+<Tab title="Español">
+Kadoku está diseñado para compilar directamente a Rust. Esto proporciona una ventaja inmensa: puedes incrustar funciones complejas, librerías del ecosistema de crates.io o código altamente optimizado y llamarlo sin overhead desde Kadoku.
+
+## Paso 1: Crea tu archivo Rust
+
+Imagina que quieres escribir una función matemática en Rust optimizada, que use librerías especializadas. Creas `math_fast.rs`:
+
+```rust
+// math_fast.rs
+pub fn super_math_add(a: f64, b: f64) -> f64 {
+    a + b + 0.1415
+}
+```
+
+## Paso 2: Vincúlalo en Kadoku
+
+Utiliza la directiva `@use_rust` especificando la ruta al archivo Rust y los símbolos que deseas importar al entorno actual.
+
+```javascript
+// main.ku
+@use_rust "math_fast.rs" expose (super_math_add);
+
+func main():
+    // Ahora puedes llamar a super_math_add de forma nativa
+    let resultado = super_math_add(10, 20);
+    !log("Resultado desde Rust:");
+    !log(resultado);
+```
+
+## Ventajas del `@use_rust`
+
+- **Rendimiento**: No hay Serialización/Deserialización ni llamadas HTTP; es una llamada nativa FFI.
+- **Acceso Directo**: Tienes acceso a todos los `crates` de Rust.
+</Tab>
+<Tab title="English">
+Kadoku is designed to compile directly to Rust. This provides an immense advantage: you can embed complex functions, libraries from the crates.io ecosystem, or highly optimized code and call it with no overhead from Kadoku.
+
+## Step 1: Create your Rust file
+
+Imagine you want to write an optimized math function in Rust, using specialized libraries. You create `math_fast.rs`:
+
+```rust
+// math_fast.rs
+pub fn super_math_add(a: f64, b: f64) -> f64 {
+    a + b + 0.1415
+}
+```
+
+## Step 2: Link it in Kadoku
+
+Use the `@use_rust` directive specifying the path to the Rust file and the symbols you want to import into the current environment.
+
+```javascript
+// main.ku
+@use_rust "math_fast.rs" expose (super_math_add);
+
+func main():
+    // Now you can call super_math_add natively
+    let result = super_math_add(10, 20);
+    !log("Result from Rust:");
+    !log(result);
+```
+
+## Advantages of `@use_rust`
+
+- **Performance**: There is no Serialization/Deserialization or HTTP calls; it is a native FFI call.
+- **Direct Access**: You have access to all Rust `crates`.
+</Tab>
+</Tabs>

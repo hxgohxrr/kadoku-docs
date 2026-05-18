@@ -1,0 +1,35 @@
+---
+title: 'Módulo net'
+description: 'Operaciones básicas de red y networking a bajo nivel.'
+---
+
+El módulo `net` expone primitivas base para la resolución de peticiones HTTP simples, utilizando internamente herramientas del sistema como cURL o clientes HTTP asíncronos en Rust.
+
+<Note>
+Para una experiencia más parecida a Axios o Fetch en JavaScript moderno, te recomendamos encarecidamente utilizar el [módulo request](/modules/request) que envuelve a `net` de una manera más estructurada, retornando objetos con estado (`status`) y cuerpo (`body`).
+</Note>
+
+## Métodos
+
+### `get(url)`
+Ejecuta una petición `GET` y devuelve crudo el string de la respuesta (`stdout`). Útil para descargas rápidas de archivos texto o scraping bruto.
+
+```javascript
+@import "net" #independent;
+
+func main():
+    let html = net.get("http://example.com");
+    !log(html);
+```
+
+### `post(url, body)`
+Ejecuta una petición `POST` enviando un body como string, y devuelve la respuesta cruda.
+
+```javascript
+@import "net" #independent;
+
+func main():
+    let data = "{\"name\": \"kadoku\"}";
+    let res = net.post("http://example.com/api", data);
+    !log(res);
+```

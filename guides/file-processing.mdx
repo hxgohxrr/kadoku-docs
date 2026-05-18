@@ -1,0 +1,51 @@
+---
+title: 'Procesamiento de Archivos'
+description: 'Leyendo y escribiendo archivos en Kadoku'
+---
+
+El manejo de archivos de texto se realiza a través del módulo `fs`. Debido a que Kadoku compila a Rust, estas operaciones son seguras y rápidas.
+
+## Lectura de Archivos
+
+Para leer un archivo de manera síncrona, utiliza `!read`.
+
+```javascript
+@import "fs" #independent;
+
+func leer_config():
+    if !exists("config.json"):
+        let contenido = !read("config.json");
+        !log("Contenido del archivo:");
+        !log(contenido);
+    else:
+        !warn("El archivo no existe.");
+```
+
+## Escritura de Archivos
+
+Puedes crear o sobreescribir archivos utilizando `!write`.
+
+```javascript
+@import "fs" #independent;
+
+func guardar_log():
+    let mensaje = "El sistema se inició correctamente.";
+    !write("app.log", mensaje);
+    !log("Archivo escrito con éxito.");
+```
+
+## Manejo de Carpetas
+
+Si necesitas asegurarte de que un directorio exista antes de escribir:
+
+```javascript
+@import "fs" #independent;
+
+func preparar_entorno():
+    !mkdir("logs");
+    !write("logs/latest.txt", "Inicio...");
+```
+
+<Tip>
+En futuras versiones de Kadoku, el módulo `fs` incorporará funciones para lectura en formato binario (Streams) para archivos de gran tamaño.
+</Tip>

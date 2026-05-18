@@ -1,0 +1,33 @@
+---
+title: 'Módulo regex'
+description: 'Comparación y manipulación de texto mediante Expresiones Regulares.'
+---
+
+El módulo `regex` empodera a Kadoku con el motor de expresiones regulares de Rust (`regex` crate), uno de los más veloces y seguros del mercado.
+
+## Métodos
+
+### `match(patron, texto)`
+Evalúa si una cadena de `texto` encaja con el `patron` de expresión regular dado. Devuelve un booleano (`true` o `false`).
+
+```javascript
+@import "regex" #independent;
+@import "cmd" #independent;
+
+func validar_correo(correo):
+    // Patrón simple para demostración
+    let patron = ".+@.+\\..+";
+    let es_valido = regex.match(patron, correo);
+    
+    if es_valido:
+        !log("El correo es correcto.");
+    else:
+        !warn("Correo electrónico inválido.");
+
+func main():
+    validar_correo("usuario@ejemplo.com");
+```
+
+<Tip>
+Las expresiones regulares en Kadoku son útiles en **Pipelines de Datos** (ETL) y aplicaciones de validación en **API REST**.
+</Tip>

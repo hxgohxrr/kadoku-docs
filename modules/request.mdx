@@ -1,0 +1,52 @@
+---
+title: 'Módulo request'
+description: 'Guía para usar el módulo request en la librería estándar de Kadoku'
+---
+
+El módulo `request` proporciona métodos para realizar peticiones HTTP fácilmente, manejando la red y devolviendo objetos (diccionarios) estructurados con el estado de la respuesta.
+
+<Note>
+Este módulo simplifica las llamadas a la red en comparación con el módulo base `net`, proveyendo código de estado (status) y cuerpo (body).
+</Note>
+
+## Métodos
+
+### `get(url)`
+
+Realiza una petición HTTP `GET` a la URL proporcionada.
+
+```javascript
+@import "request" #independent;
+
+func fetch_data():
+    let res = request.get("https://jsonplaceholder.typicode.com/todos/1");
+    
+    if res.status == 200:
+        !log("Respuesta recibida:");
+        !log(res.body);
+    else:
+        !error("Error en la llamada");
+```
+
+### `post(url, body)`
+
+Realiza una petición HTTP `POST` enviando el `body` especificado. Automáticamente establece la cabecera `Content-Type: application/json`.
+
+```javascript
+@import "request" #independent;
+
+func send_data():
+    let payload = "{\"title\": \"foo\", \"body\": \"bar\", \"userId\": 1}";
+    let res = request.post("https://jsonplaceholder.typicode.com/posts", payload);
+    
+    !log("Status de la creación:");
+    !log(res.status);
+    !log(res.body);
+```
+
+## Objeto de Respuesta
+
+Todas las funciones del módulo `request` devuelven un Diccionario (Objeto) estructurado:
+
+- **`status`**: Número (`Num`) que representa el código HTTP (ej. `200` o `500`).
+- **`body`**: Cadena de texto (`Str`) con el cuerpo de la respuesta crudo. Si esperas un JSON, deberás parsearlo con el [módulo json](/modules/json).

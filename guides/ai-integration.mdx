@@ -1,0 +1,38 @@
+---
+title: 'Integración con Inteligencia Artificial'
+description: 'Llama a modelos LLM nativamente con el módulo AI'
+---
+
+Kadoku integra capacidades de IA a través de su módulo estándar `ai`. Esto te permite añadir razonamiento avanzado a tus programas sin necesidad de usar APIs REST complicadas manualmente.
+
+<Note>
+Asegúrate de tener configurada tu API Key localmente (ej. la variable de entorno de OpenAI, Anthropic o Gemini) dependiendo del motor por defecto de Kadoku en tu entorno.
+</Note>
+
+## Hacer una pregunta rápida
+
+El método `!ask` es perfecto para tareas de "Zero-shot". Le envías un prompt y devuelve un string con la respuesta.
+
+```javascript
+@import "ai" #independent;
+
+func main():
+    let prompt = "Resume en una línea qué es la programación funcional.";
+    let respuesta = !ask(prompt);
+    
+    !log("Respuesta del modelo:");
+    !log(respuesta);
+```
+
+## Completado de Código o Texto Estructurado
+
+El método `!complete` es ideal si tienes un contexto base y necesitas que el modelo lo continúe.
+
+```javascript
+@import "ai" #independent;
+
+func autocompletar():
+    let prompt = "La siguiente función de Python calcula Fibonacci:\n\ndef fibonacci(n):";
+    let completado = !complete(prompt);
+    !log(completado);
+```

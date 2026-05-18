@@ -1,0 +1,57 @@
+---
+title: 'Módulo math'
+description: 'Operaciones matemáticas avanzadas y generadores pseudo-aleatorios.'
+---
+
+El módulo `math` proporciona acceso a cálculos flotantes de alta precisión respaldados por las primitivas `f64` de Rust.
+
+## Métodos Aritméticos Básicos
+Aunque Kadoku tiene operadores (`+`, `-`, `*`, `/`), el módulo `math` ofrece funciones para su uso programático.
+
+- `add(a, b)`: Suma.
+- `sub(a, b)`: Resta.
+- `mul(a, b)`: Multiplicación.
+- `div(a, b)`: División.
+
+## Operaciones Avanzadas
+
+### `pow(base, exponente)`
+Eleva la `base` a la potencia del `exponente`.
+
+```javascript
+@import "math" #independent;
+let resultado = math.pow(2, 3); // 8
+```
+
+### `sqrt(numero)`
+Devuelve la raíz cuadrada de un número.
+
+```javascript
+@import "math" #independent;
+let raiz = math.sqrt(16); // 4
+```
+
+### `abs(numero)`
+Calcula el valor absoluto (remueve el signo negativo).
+
+```javascript
+@import "math" #independent;
+let absoluto = math.abs(-10.5); // 10.5
+```
+
+## Redondeo
+
+- `floor(numero)`: Redondea hacia abajo al entero más cercano.
+- `ceil(numero)`: Redondea hacia arriba al entero más cercano.
+- `round(numero)`: Redondea al entero más próximo (`> 0.5` sube, `< 0.5` baja).
+
+## Aleatoriedad
+
+### `random()`
+Devuelve un número flotante pseudo-aleatorio entre `0.0` y `1.0`.
+
+```javascript
+@import "math" #independent;
+let azar = math.random();
+!log(azar);
+```

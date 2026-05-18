@@ -1,0 +1,26 @@
+---
+title: 'Referencia de la Librería Estándar (Stdlib)'
+description: 'Catálogo de funciones y métodos disponibles globalmente.'
+---
+
+La librería estándar de Kadoku (Stdlib) está estructurada en submódulos para mantener el Core limpio y eficiente. Todos se inyectan en tiempo de compilación y su código en Rust corre en un entorno embebido ultra-optimizado.
+
+### Resumen de Módulos
+
+- **`cmd`**: Operaciones de consola, entorno y sistema (`log`, `warn`, `error`, `args`, `env`).
+- **`os`**: Control de procesos del sistema (`exit`, `sleep`, `cwd`, `chdir`).
+- **`crypto`**: Funciones criptográficas y codificación (`base64_encode`, `base64_decode`).
+- **`string`**: Utilidades nativas para texto (`len`, `split`, `replace`, `to_lower`, `to_upper`, `trim`).
+- **`array`**: Manejo inmutable de listas (`len`, `push`, `pop`, `join`).
+- **`path`**: Manipulación multiplataforma de rutas (`join`, `basename`, `extname`, `dirname`).
+- **`math`**: Matemáticas y operaciones numéricas flotantes (`add`, `sub`, `pow`, `sqrt`, `random`).
+- **`fs`**: Interacción con el sistema de archivos (`read`, `write`, `exists`, `mkdir`).
+- **`request`**: Llamadas asíncronas de red (`get`, `post`).
+- **`json`**: Parseo y serialización de JSON (`parse`, `stringify`).
+- **`web`**: Microframework interno de servidor web asíncrono (`route`, `listen`).
+- **`ai`**: Wrapper de Modelos de Lenguaje (`ask`, `chat`, `complete`, `embed`).
+- **`test`**: Framework de unit testing nativo (`assert_eq`, `assert_true`).
+- **IPC (`py`, `node`)**: Comunicación inter-procesos para ejecutar scripts nativos.
+
+> **Nota**: Para utilizar un submódulo, decláralo al principio de tu archivo `.ku` usando `@import "nombre" #independent;`.
+

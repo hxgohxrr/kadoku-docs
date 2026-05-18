@@ -1,0 +1,69 @@
+---
+title: 'Módulo ai / AI Module'
+description: 'Inteligencia Artificial de Primera Clase en el runtime de Kadoku. / First-class AI in the Kadoku runtime.'
+---
+
+<Tabs>
+<Tab title="Español">
+Kadoku es uno de los primeros lenguajes de programación pensados desde el día 1 para tener Inteligencia Artificial como un ciudadano de primera clase. El módulo `ai` envuelve y abstrae el consumo de Modelos de Lenguaje Grandes (LLMs).
+
+## Métodos
+
+### `ask(prompt)`
+La forma más sencilla de invocar la IA. Toma una cadena de texto, la envía al modelo configurado, espera a que genere una respuesta y la devuelve entera como `Str`.
+
+```javascript
+@import "ai" #independent;
+
+func main():
+    let resp = ai.ask("Traduce 'Hola Mundo' a Japonés");
+    !log(resp); // Output: ハロー・ワールド
+```
+
+### `chat(prompt)`
+Diseñado para mantener contexto y un historial de conversación dentro de la sesión actual de la terminal o aplicación.
+
+```javascript
+@import "ai" #independent;
+
+func conversacion():
+    let m1 = ai.chat("Mi nombre es Null");
+    let m2 = ai.chat("¿Recuerdas cuál es mi nombre?");
+    !log(m2);
+```
+
+### `embed(texto)`
+Retorna un Vector (Arreglo matemático) gigante que representa el significado del texto provisto (`Embeddings`). Sumamente útil si deseas construir aplicaciones RAG (Bases de datos Vectoriales) sin dependencias extra en tu código.
+</Tab>
+<Tab title="English">
+Kadoku is one of the first programming languages designed from day 1 to have Artificial Intelligence as a first-class citizen. The `ai` module wraps and abstracts the consumption of Large Language Models (LLMs).
+
+## Methods
+
+### `ask(prompt)`
+The simplest way to invoke AI. It takes a text string, sends it to the configured model, waits for it to generate a response, and returns it entirely as a `Str`.
+
+```javascript
+@import "ai" #independent;
+
+func main():
+    let resp = ai.ask("Translate 'Hello World' to Japanese");
+    !log(resp); // Output: ハロー・ワールド
+```
+
+### `chat(prompt)`
+Designed to maintain context and a conversation history within the current terminal or application session.
+
+```javascript
+@import "ai" #independent;
+
+func conversation():
+    let m1 = ai.chat("My name is Null");
+    let m2 = ai.chat("Do you remember my name?");
+    !log(m2);
+```
+
+### `embed(text)`
+Returns a giant Vector (mathematical array) representing the meaning of the provided text (`Embeddings`). Extremely useful if you want to build RAG (Vector Database) applications without extra dependencies in your code.
+</Tab>
+</Tabs>

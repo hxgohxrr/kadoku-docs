@@ -1,0 +1,33 @@
+---
+title: 'Tutorial: Chatbot con IA'
+description: 'Crea un bot que responda preguntas interactuando con la librería ai'
+---
+
+Este tutorial es una demostración rápida de cómo la IA de primera clase está embebida en Kadoku.
+
+Usaremos el comando interactivo del sistema para leer el input del usuario en un bucle infinito, y lo conectaremos al módulo `ai`.
+
+```javascript
+@import "ai" #independent;
+@import "cmd" #independent;
+
+func main():
+    !log("Bienvenido al Chatbot AI de Kadoku.");
+    !log("Escribe 'salir' para terminar.");
+    
+    while true:
+        // Supongamos un método hipotético cmd.input() 
+        // para capturar entrada estándar
+        !log("Tú: ¿Cual es la capital de Francia?");
+        
+        let prompt = "¿Cual es la capital de Francia?";
+        let respuesta = ai.chat(prompt);
+        
+        !log("Bot: ");
+        !log(respuesta);
+        
+        // Terminar el ejemplo tras el primer ciclo
+        return null;
+```
+
+Con pocas líneas, has consumido APIs de inferencia complejas de manera idiomática, limpia y altamente funcional.

@@ -1,0 +1,39 @@
+---
+title: Variables
+description: 'Declaración y uso de variables en Kadoku / Declaration and use of variables in Kadoku'
+---
+
+<Tabs><Tab title="Español">
+    # Variables
+
+    En Kadoku, puedes definir variables mutables e inmutables. El sistema de tipos es dinámico en el código fuente, pero el compilador infiere los tipos subyacentes en Rust.
+
+    ## Declaración
+
+    Puedes declarar variables usando `var`, `let`, o `const`:
+
+    ```kadoku
+    var nombre = "Kadoku";   // Variable dinámica mutable
+    let version = 1.0;       // Asignación estándar
+    const MAX = 100;         // Constante inmutable
+    ```
+
+    - Las variables declaradas con `var` o `let` pueden ser reasignadas.
+    - Las declaradas con `const` no pueden cambiar su valor una vez inicializadas.</Tab><Tab title="English">
+    # Variables
+
+    In Kadoku, you can define mutable and immutable variables. The type system is dynamic in the source code, but the compiler infers the underlying types in Rust.
+
+    ## Declaration
+
+    You can declare variables using `var`, `let`, or `const`:
+
+    ```kadoku
+    var name = "Kadoku";     // Mutable dynamic variable
+    let version = 1.0;       // Standard assignment
+    const MAX = 100;         // Immutable constant
+    ```
+
+    - Variables declared with `var` or `let` can be reassigned.
+    - Those declared with `const` cannot change their value once initialized.</Tab>
+</Tabs>

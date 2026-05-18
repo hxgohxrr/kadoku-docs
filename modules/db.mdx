@@ -1,0 +1,48 @@
+---
+title: 'Módulo db'
+description: 'Librería estándar para la conexión y consulta de bases de datos.'
+---
+
+El módulo `db` provee conectores genéricos nativos para persistir tus datos localmente o conectarte a orígenes de datos externos. Su versión nativa actualmente está optimizada para bases de datos embebidas (SQLite).
+
+## Métodos Principales
+
+### `open(ruta)`
+Abre una conexión con la base de datos o la inicializa si no existe (muy útil con un archivo `.db` de SQLite).
+
+```javascript
+@import "db" #independent;
+
+func inicializar():
+    let conn = db.open("data.sqlite");
+    !log("Conexión abierta");
+```
+
+### `exec(query)`
+Ejecuta un comando SQL que no requiere retornar información (ej. `CREATE`, `UPDATE`, `INSERT`).
+
+```javascript
+@import "db" #independent;
+
+func main():
+    db.open("mi_db.sqlite");
+    db.exec("CREATE TABLE IF NOT EXISTS users (id INTEGER, name TEXT);");
+    db.exec("INSERT INTO users VALUES (1, 'Alice');");
+```
+
+### `query(query)`
+Ejecuta un comando SQL (`SELECT`) y devuelve un objeto de datos de Kadoku (usualmente un Arreglo de Diccionarios).
+
+```javascript
+@import "db" #independent;
+
+func main():
+    db.open("mi_db.sqlite");
+    let rows = db.query("SELECT * FROM users;");
+    !log("Usuarios encontrados:");
+    !log(rows);
+```
+
+<Note>
+Esta API se expandirá próximamente para soportar conectores de PostgreSQL y abstracciones ORM completas usando la directiva de anotación.
+</Note>

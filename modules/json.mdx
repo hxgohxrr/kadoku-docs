@@ -1,0 +1,45 @@
+---
+title: 'Módulo json'
+description: 'Guía para serializar y parsear datos JSON en Kadoku'
+---
+
+El módulo `json` permite convertir cadenas de texto en formato JSON a diccionarios o arrays nativos de Kadoku, y viceversa. Es esencial cuando trabajas con APIs o archivos de configuración.
+
+## Métodos
+
+### `parse(text)`
+
+Toma una cadena de texto (`Str`) en formato JSON válido y devuelve el tipo de dato correspondiente en Kadoku (generalmente un Objeto/Diccionario o Array).
+
+```javascript
+@import "json" #independent;
+
+func load_config():
+    let raw = "{\"theme\": \"dark\", \"port\": 8080}";
+    let config = json.parse(raw);
+    
+    !log("Tema actual:");
+    !log(config.theme);
+```
+
+### `stringify(value)`
+
+Convierte cualquier valor nativo de Kadoku en una cadena de texto en formato JSON válido.
+
+```javascript
+@import "json" #independent;
+
+func save_data():
+    let user = {
+        name: "Kadoku",
+        version: 1.0,
+        active: true
+    };
+    
+    let text = json.stringify(user);
+    !log(text);
+```
+
+<Tip>
+El uso más común del módulo `json` es en conjunto con los módulos `fs` (para leer/escribir archivos .json) o con el módulo `request` (para enviar o recibir llamadas de APIs RESTful).
+</Tip>

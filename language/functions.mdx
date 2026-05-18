@@ -1,0 +1,63 @@
+---
+title: Funciones / Functions
+description: 'Definición y uso de funciones en Kadoku / Definition and use of functions in Kadoku'
+---
+
+<Tabs><Tab title="Español">
+    # Funciones
+
+    En Kadoku, las funciones son ciudadanas de primera clase.
+
+    ## Definición Básica
+
+    Se definen utilizando la palabra clave `func`:
+
+    ```kadoku
+    func saludar(nombre):
+        !log("¡Hola, " + nombre + "!");
+        return true;
+    ```
+
+    ## Valores de Retorno
+
+    Puedes devolver valores utilizando la palabra clave `return`. Si no se especifica, devuelven `null`.
+
+    ## Ejecución Global (`default`)
+
+    Kadoku proporciona la palabra clave `default` para ejecutar una función en el contexto global cuando el archivo es el punto de entrada principal.
+
+    ```kadoku
+    func principal():
+        !log("Iniciando la aplicación...");
+
+    default principal();
+    ```</Tab><Tab title="English">
+    # Functions
+
+    In Kadoku, functions are first-class citizens.
+
+    ## Basic Definition
+
+    They are defined using the `func` keyword:
+
+    ```kadoku
+    func greet(name):
+        !log("Hello, " + name + "!");
+        return true;
+    ```
+
+    ## Return Values
+
+    You can return values using the `return` keyword. If omitted, they return `null`.
+
+    ## Global Execution (`default`)
+
+    Kadoku provides the `default` keyword to execute a function in the global context when the file is the main entry point.
+
+    ```kadoku
+    func main():
+        !log("Starting the application...");
+
+    default main();
+    ```</Tab>
+</Tabs>

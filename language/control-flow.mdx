@@ -1,0 +1,87 @@
+---
+title: Control de Flujo / Control Flow
+description: 'Condicionales y bucles en Kadoku / Conditionals and loops in Kadoku'
+---
+
+<Tabs><Tab title="Español">
+    # Control de Flujo
+
+    Kadoku ofrece estructuras de control de flujo estándar y fáciles de leer.
+
+    ## Condicionales
+
+    Puedes utilizar las palabras clave `if`, `elif` y `else`:
+
+    ```kadoku
+    var version = 2.0;
+
+    if version >= 2.0:
+        !log("Versión moderna");
+    elif version == 1.0:
+        !log("Primera versión");
+    else:
+        !log("Versión desconocida");
+    ```
+
+    ## Bucles
+
+    ### Bucle `for`
+    Ideal para iterar sobre colecciones:
+
+    ```kadoku
+    let elementos = [10, 20, 30];
+
+    for elemento in elementos:
+        !log(elemento);
+    ```
+
+    ### Bucle `while`
+    Ejecuta un bloque mientras la condición sea verdadera:
+
+    ```kadoku
+    var contador = 0;
+
+    while contador < 5:
+        contador = contador + 1;
+    ```</Tab><Tab title="English">
+    # Control Flow
+
+    Kadoku offers standard and easy-to-read control flow structures.
+
+    ## Conditionals
+
+    You can use the keywords `if`, `elif`, and `else`:
+
+    ```kadoku
+    var version = 2.0;
+
+    if version >= 2.0:
+        !log("Modern version");
+    elif version == 1.0:
+        !log("First version");
+    else:
+        !log("Unknown version");
+    ```
+
+    ## Loops
+
+    ### `for` Loop
+    Ideal for iterating over collections:
+
+    ```kadoku
+    let elements = [10, 20, 30];
+
+    for element in elements:
+        !log(element);
+    ```
+
+    ### `while` Loop
+    Executes a block while the condition remains true:
+
+    ```kadoku
+    var counter = 0;
+
+    while counter < 5:
+        counter = counter + 1;
+    ```</Tab>
+</Tabs>

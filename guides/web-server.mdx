@@ -1,0 +1,93 @@
+---
+title: 'Servidor Web Básico / Basic Web Server'
+description: 'Cómo levantar un servidor web rápido usando Kadoku / How to spin up a fast web server using Kadoku'
+---
+
+<Tabs>
+<Tab title="Español">
+Kadoku provee de manera nativa herramientas para levantar un servidor web asíncrono utilizando su módulo integrado `web`. Está diseñado para ser rápido y no requerir dependencias externas para casos de uso comunes.
+
+## Paso 1: Importar el módulo web
+
+Comenzamos importando el módulo `web` usando la directiva de independencia para cargar sus métodos de forma global.
+
+```javascript
+@import "web" #independent;
+```
+
+## Paso 2: Configurar las rutas
+
+El método `!route(path, content_type, response)` nos permite definir los endpoints de nuestro servidor.
+Por ejemplo, crearemos un endpoint `/` para servir HTML y un endpoint `/api/ping` para servir JSON.
+
+```javascript
+@import "web" #independent;
+@import "json" #independent;
+
+func main():
+    !route("/", "text/html", "<h1>Hola desde Kadoku!</h1>");
+    
+    let json_resp = json.stringify({
+        status: "ok",
+        message: "Pong!"
+    });
+    !route("/api/ping", "application/json", json_resp);
+    
+    !log("Iniciando servidor web...");
+    !listen();
+```
+
+## Ejecución
+
+Guarda este archivo como `server.ku` y ejecútalo con el CLI:
+
+```bash
+kadoku run server.ku
+```
+
+Verás en consola un mensaje indicando que el servidor está escuchando en el puerto `8080` (por defecto). Abre tu navegador en `http://localhost:8080` para ver la respuesta.
+</Tab>
+<Tab title="English">
+Kadoku natively provides tools to spin up an asynchronous web server using its built-in `web` module. It is designed to be fast and not require external dependencies for common use cases.
+
+## Step 1: Import the web module
+
+We start by importing the `web` module using the independent directive to load its methods globally.
+
+```javascript
+@import "web" #independent;
+```
+
+## Step 2: Configure routes
+
+The `!route(path, content_type, response)` method allows us to define the endpoints of our server.
+For example, we will create a `/` endpoint to serve HTML and an `/api/ping` endpoint to serve JSON.
+
+```javascript
+@import "web" #independent;
+@import "json" #independent;
+
+func main():
+    !route("/", "text/html", "<h1>Hello from Kadoku!</h1>");
+    
+    let json_resp = json.stringify({
+        status: "ok",
+        message: "Pong!"
+    });
+    !route("/api/ping", "application/json", json_resp);
+    
+    !log("Starting web server...");
+    !listen();
+```
+
+## Execution
+
+Save this file as `server.ku` and run it with the CLI:
+
+```bash
+kadoku run server.ku
+```
+
+You will see a console message indicating that the server is listening on port `8080` (by default). Open your browser at `http://localhost:8080` to see the response.
+</Tab>
+</Tabs>

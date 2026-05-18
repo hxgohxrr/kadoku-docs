@@ -1,0 +1,67 @@
+---
+title: Sistema de Imports / Imports System
+description: 'Cómo usar módulos en Kadoku / How to use modules in Kadoku'
+---
+
+<Tabs><Tab title="Español">
+    # Sistema de Imports
+
+    Kadoku tiene un sistema modular controlado por directivas `@import`.
+
+    ## Importación Básica
+
+    Importa un módulo como un namespace:
+
+    ```kadoku
+    @import "math";
+
+    var raiz = math.sqrt(9);
+    ```
+
+    ## Importación Independiente (`#independent`)
+
+    Importa las funciones para usarlas directamente, pero prefijadas con `!`:
+
+    ```kadoku
+    @import "cmd" #independent;
+
+    !log("Hola");
+    ```
+
+    ## Alias y Lazy Loading
+
+    ```kadoku
+    @import "fs" #alias "archivos";
+    @import "pesado" #lazy;
+    ```</Tab><Tab title="English">
+    # Imports System
+
+    Kadoku has a modular system controlled by `@import` directives.
+
+    ## Basic Import
+
+    Import a module as a namespace:
+
+    ```kadoku
+    @import "math";
+
+    var root = math.sqrt(9);
+    ```
+
+    ## Independent Import (`#independent`)
+
+    Import functions to use them directly, but prefixed with `!`:
+
+    ```kadoku
+    @import "cmd" #independent;
+
+    !log("Hello");
+    ```
+
+    ## Aliasing and Lazy Loading
+
+    ```kadoku
+    @import "fs" #alias "files";
+    @import "heavy" #lazy;
+    ```</Tab>
+</Tabs>

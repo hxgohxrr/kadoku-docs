@@ -1,0 +1,55 @@
+---
+title: 'Registry y Ecosistema'
+description: 'Gestión y publicación de librerías Kadoku a través del Registry (kdp).'
+---
+
+El ecosistema de librerías en Kadoku está centralizado a través de un servicio back-end de alta disponibilidad, conocido como **Kadoku Registry**. Esto permite la publicación, descarga y resolución de dependencias entre proyectos sin la complejidad de clonar repositorios completos.
+
+## API y Arquitectura del Registry
+
+A diferencia de un manejador local estático, el binario `kadoku-registry` funciona como un servidor backend completo basado en el poderoso framework enrutador `axum` de Rust. 
+
+- **Resolución dinámica**: Expone de manera segura endpoints REST (como `/api/v1/packages/`) a los que el compilador y CLI de Kadoku (`kadoku add` y `kadoku package`) se conectan directamente. 
+- **Rapidez C/S**: Todo el proceso cliente-servidor (C/S) funciona bajo HTTP ultra-rápido, asegurando que subir un archivo (publicar tu código compilado y comprimido bajo `dist/`) o descargar la última versión del ecosistema global consuma apenas unos pocos kilobytes y un parpadeo de tiempo, resolviendo automáticamente las dependencias en cascada y atándolas al compilador local instantáneamente.
+
+## Añadiendo Dependencias (`kadoku add`)
+
+Puedes incluir la biblioteca de un tercero ejecutando el comando:
+
+```bash
+kadoku add <nombre_paquete>
+```
+
+Por ejemplo, si necesitas manejar tokens de autenticación:
+
+```bash
+kadoku add jwt
+```
+
+Esto buscará las versiones en el Kadoku Registry y actualizará tu `project.ku.json`. Posteriormente, el instalador recuperará el paquete comprimido `.kdp` y lo situará en el caché local de Kadoku.
+
+## Eliminando Dependencias (`kadoku remove`)
+
+Para remover paquetes instalados:
+
+```bash
+kadoku remove jwt
+```
+
+Se limpiará el caché y se removerá la entrada correspondiente del manifiesto, impidiendo que ese código se adjunte a la próxima compilación del proyecto.
+
+## Publicando un Paquete (`kadoku package`)
+
+Al terminar un módulo valioso, puedes empaquetar tu código y subirlo al Registry para que otros lo puedan usar en todo el mundo.
+
+1. **Configura tu Manifest:**
+Asegúrate que tu `project.ku.json` tiene listados la versión (SemVer), el autor y un link a un repositorio válido.
+
+2. **Crea el Empaquetado:**
+```bash
+kadoku package
+```
+Este proceso evalúa tu código, elimina recursos de desarrollo innecesarios y comprime una tarball (con extensión `.kdp` en la carpeta `dist/`).
+
+3. **Publicación Final**
+El paquete se enviará al endpoint `/api/v1/publish` y, de ser aprobado, quedará inmortalizado en la nube para que otros lo requieran usando `kadoku add`.

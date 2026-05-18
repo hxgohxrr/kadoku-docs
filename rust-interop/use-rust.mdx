@@ -1,0 +1,88 @@
+---
+title: Uso de @use_rust / Using @use_rust
+description: 'Interoperabilidad nativa con código Rust / Native interoperability with Rust code'
+---
+
+<Tabs>
+<Tab title="Español">
+# Directiva `@use_rust`
+
+La directiva `@use_rust` te permite importar directamente archivos `.rs` (Rust) a tu código Kadoku.
+
+## Sintaxis Básica
+
+```kadoku
+@use_rust "src/native/calculo.rs" #alias "calc";
+
+var resultado = calc.procesar([1, 2, 3]);
+```
+
+## Auto-Generación de Wrappers (FFI Invisible)
+
+Kadoku escanea inteligentemente tus archivos importados en busca de funciones públicas (`pub fn`). Esto significa que **no tienes que lidiar con la API interna de Kadoku (`KdValue`)**. Simplemente escribe tu código en Rust puro:
+
+**`src/native/calculo.rs`**
+```rust
+pub fn procesar(texto: String) -> String {
+    format!("Kadoku dijo: {}", texto)
+}
+```
+
+**`main.ku`**
+```kadoku
+@use_rust "src/native/calculo.rs" #alias "calc";
+
+func main() {
+    var resultado = calc.procesar("Hola desde VM!");
+    !log(resultado);
+}
+```
+El compilador se encargará de crear los puentes de memoria, parsear los argumentos y enlazar el código automáticamente en tiempo de compilación.
+
+## Beneficios
+1. **Rendimiento Cero Sobrecarga:** El código se enlaza nativamente.
+2. **Fácil Integración:** Kadoku genera los wrappers necesarios automáticamente.
+3. **Acceso a Cargo:** Puedes aprovechar las librerías de Rust (Crates).
+</Tab>
+
+<Tab title="English">
+# The `@use_rust` Directive
+
+The `@use_rust` directive allows you to import `.rs` (Rust) files directly into your Kadoku code.
+
+## Basic Syntax
+
+```kadoku
+@use_rust "src/native/calculation.rs" #alias "calc";
+
+var result = calc.process([1, 2, 3]);
+```
+
+## Auto-Generation of Wrappers (Invisible FFI)
+
+Kadoku intelligently scans your imported files for public functions (`pub fn`). This means **you don't have to deal with Kadoku's internal API (`KdValue`)**. Simply write your pure Rust code:
+
+**`src/native/calculation.rs`**
+```rust
+pub fn process(text: String) -> String {
+    format!("Kadoku said: {}", text)
+}
+```
+
+**`main.ku`**
+```kadoku
+@use_rust "src/native/calculation.rs" #alias "calc";
+
+func main() {
+    var result = calc.process("Hello from VM!");
+    !log(result);
+}
+```
+The compiler will automatically create memory bridges, parse arguments, and link the code for you at compile time.
+
+## Benefits
+1. **Zero Overhead Performance:** The code is natively linked.
+2. **Easy Integration:** Kadoku generates the necessary wrappers automatically.
+3. **Cargo Access:** You can leverage Rust libraries (Crates).
+</Tab>
+</Tabs>

@@ -1,0 +1,57 @@
+---
+title: 'Manifiesto / Manifest'
+description: 'Gestión de proyectos con project.ku.json / Project management with project.ku.json'
+---
+
+<Tabs>
+  <Tab title="Español">
+# El Manifiesto del Proyecto
+
+Todo proyecto Kadoku incluye un `project.ku.json`, el cual define la configuración, equivalente a `package.json` en Node o `Cargo.toml` en Rust.
+
+## Estructura
+
+```json
+{
+  "project": {
+    "name": "mi_proyecto",
+    "version": "0.1.0",
+    "authors": ["Nombre <email@ej.com>"]
+  },
+  "dependencies": {
+    "math_extras": "1.0"
+  },
+  "compiler": {
+    "rust_dependencies": {
+      "rand": "0.8"
+    }
+  }
+}
+```
+  </Tab>
+  <Tab title="English">
+# The Project Manifest
+
+Every Kadoku project includes a `project.ku.json`, equivalent to `package.json` in Node or `Cargo.toml` in Rust.
+
+## Structure
+
+```json
+{
+  "project": {
+    "name": "my_project",
+    "version": "0.1.0",
+    "authors": ["Name <email@ex.com>"]
+  },
+  "dependencies": {
+    "math_extras": "1.0"
+  },
+  "compiler": {
+    "rust_dependencies": {
+      "rand": "0.8"
+    }
+  }
+}
+```
+  </Tab>
+</Tabs>

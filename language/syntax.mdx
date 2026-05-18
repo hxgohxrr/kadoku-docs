@@ -1,0 +1,73 @@
+---
+title: Sintaxis Básica / Basic Syntax
+description: 'Sintaxis básica y estructura del código en Kadoku / Basic syntax and code structure in Kadoku'
+---
+
+<Tabs><Tab title="Español">
+    # Sintaxis Básica
+
+    Kadoku está diseñado para ser limpio, legible y libre de ruido visual. Su filosofía se centra en la simplicidad, permitiéndote expresar lógica compleja de forma concisa.
+
+    ## Indentación y Bloques Lógicos
+
+    A diferencia de lenguajes como C, Java o Rust, Kadoku no utiliza llaves `{}` para definir bloques de código. En su lugar, utiliza **indentación** (espacios o tabulaciones), similar a Python.
+
+    ```kadoku
+    if true:
+        !log("Este bloque está indentado")
+        !log("Pertenece a la condición if")
+        
+    !log("Este código está fuera del bloque")
+    ```
+
+    ## Punto y Coma
+
+    El punto y coma `;` al final de las sentencias es opcional en la mayoría de los casos, pero se recomienda para mayor claridad.
+
+    ```kadoku
+    var nombre = "Kadoku";
+    var version = 1.0;
+    ```
+
+    ## Comentarios
+
+    Los comentarios de una sola línea comienzan con `//`. 
+
+    ```kadoku
+    // Esto es un comentario de una sola línea
+    var a = 5; // Comentario al final de la línea
+    ```</Tab><Tab title="English">
+    # Basic Syntax
+
+    Kadoku is designed to be clean, readable, and free of visual noise. Its philosophy focuses on simplicity, allowing you to express complex logic concisely.
+
+    ## Indentation and Logical Blocks
+
+    Unlike languages such as C, Java, or Rust, Kadoku does not use `{}` braces to define code blocks. Instead, it uses **indentation** (spaces or tabs), similar to Python.
+
+    ```kadoku
+    if true:
+        !log("This block is indented")
+        !log("It belongs to the if condition")
+        
+    !log("This code is outside the block")
+    ```
+
+    ## Semicolons
+
+    The semicolon `;` at the end of statements is optional in most cases, but recommended for clarity.
+
+    ```kadoku
+    var name = "Kadoku";
+    var version = 1.0;
+    ```
+
+    ## Comments
+
+    Single-line comments start with `//`. 
+
+    ```kadoku
+    // This is a single-line comment
+    var a = 5; // Comment at the end of the line
+    ```</Tab>
+</Tabs>

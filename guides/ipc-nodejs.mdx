@@ -1,0 +1,28 @@
+---
+title: 'Interoperabilidad con Node.js'
+description: 'Ejecutar código y paquetes NPM desde Kadoku'
+---
+
+Si necesitas delegar una tarea que está altamente optimizada en NPM (por ejemplo, compiladores de Frontend, procesamiento de SSR, o utilidades JavaScript), Kadoku provee el módulo `node`.
+
+## Ejecución con Node
+
+A través de la comunicación IPC, puedes invocar al motor de JavaScript (V8).
+
+```javascript
+@import "node" #independent;
+
+func main():
+    let script = "
+const obj = { framework: 'Mintlify', status: 'Awesome' };
+console.log(JSON.stringify(obj));
+    ";
+    
+    !log("Respuesta de NodeJS:");
+    let result = node.run(script);
+    !log(result);
+```
+
+## Ventajas de IPC con Node
+- Puedes crear scripts en TS/JS y ejecutarlos para delegar el "scraping" con herramientas como Puppeteer.
+- Separación de responsabilidades: Mantienes el Core robusto en Kadoku (Rust) y delegas tareas al ecosistema JS solo donde es necesario.

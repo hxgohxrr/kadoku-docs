@@ -1,0 +1,34 @@
+---
+title: 'Gramática Formal (EBNF)'
+description: 'La gramática formal de Kadoku'
+---
+
+Kadoku posee una gramática inspirada en Python y Swift, siendo fácil de leer, sin puntos y comas obligatorios (sólo opcionales en ciertas construcciones), e indentación opcional, prefiriendo los dos puntos `:` en estructuras de control.
+
+```ebnf
+program    ::= { item }
+item       ::= import_decl 
+             | use_rust_decl 
+             | func_def 
+             | stmt
+
+import_decl::= "@import" string [ { flag } ] ";"
+flag       ::= "#independent" | "#lazy" | "#native" | "#alias" "(" ident ")"
+
+func_def   ::= "func" ident "(" [ params ] ")" ":" { stmt }
+params     ::= ident { "," ident }
+
+stmt       ::= var_decl 
+             | expr_stmt 
+             | if_stmt 
+             | while_stmt 
+             | for_stmt 
+             | match_stmt 
+             | return_stmt 
+             | default_stmt
+
+var_decl   ::= "let" ident "=" expr ";"
+if_stmt    ::= "if" expr ":" { stmt } [ "elif" expr ":" { stmt } ] [ "else" ":" { stmt } ]
+```
+
+*Esta es una aproximación simplificada.* Para el diseño formal léxico completo, dirígete al código fuente en `crates/kadoku-compiler/src/parser.rs`.
