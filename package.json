@@ -1,0 +1,10 @@
+{
+  "name": "kadoku-docs",
+  "scripts": {
+    "dev": "mintlify dev",
+    "start": "mintlify dev"
+  },
+  "dependencies": {
+    "mintlify": "latest"
+  }
+}
